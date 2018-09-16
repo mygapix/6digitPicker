@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+
+<head>
+ <meta charset="utf-8">
+ <title> numGen</title>
+ <style>
+    html{
+      font-family: arial;
+    }
+    button {
+      display: block;
+      margin: 0 auto;
+      background-color: #fff;
+      border: 3px solid black;
+      padding: 10px 20px;
+      font-size: 30px;
+      transition: .2s;
+      border-radius: 10px;
+    }
+
+    button:hover {
+      background-color: #000;
+      color: white;
+    }
+
+    div {
+      float: left;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background-color: #ff6666;
+      margin: 10px;
+      line-height: 60px;
+      text-align: center;
+      font-weight: bold;
+      color: white;
+      font-size: 25px;
+    }
+ </style>
+</head>
+
+
+
+<body>
+ <button id="button"> DRAW A NUMBER</button>
+
+<script>
+  var button = document.getElementById('button');
+  button.addEventListener('click', pickRandomNumber);
+
+  function pickRandomNumber() {
+    if(pickedNum.length === 6) return;
+
+    const result = Math.floor(Math.random()*49 + 1)
+
+    for (let i=0; i < pickedNum.length; i++) {
+      if ( result === pickedNum[i]) {
+        return pickRandomNumber()
+      }
+    }
+
+    const div = document.createElement('div');
+
+    div.textContent = result;
+
+    pickedNum.push(result)
+
+    document.body.appendChild(div);
+  }
+
+const pickedNum = [];
+
+
+</script>
+</body>
+
+</html>
